@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Activity {
+  id                Int        @id
+  category          String
+  activity          String
+  domainTags        String
+  energy            String
+  setting           String
+  socialMode        String
+  minTime           Int
+  maxTime           Int
+  weekdaySlotFit    String
+  cost              String
+  output            String
+  psychologicalNeed String
+  moodTarget        String
+  novelty           String
+  friction          String
+  repeatability     String
+  note              String
+  logs              LogEntry[]
+
+  @@index([category])
+  @@index([energy])
+  @@index([setting])
+}
+
+model LogEntry {
+  id                    Int       @id @default(autoincrement())
+  activityId            Int
+  status                String    @default("pending")
+  spunAt                DateTime  @default(now())
+  completedAt           DateTime?
+  durationMinutes       Int?
+  enjoyment             Int?
+  calmAfter             Int?
+  curiosityToRepeat     Int?
+  proudCapable          Int?
+  feltLikeMe            Int?
+  connected             Int?
+  frictionExperienced   Int?
+  wouldRepeat           String?
+  notes                 String    @default("")
+  activity              Activity  @relation(fields: [activityId], references: [id], onDelete: Cascade)
+
+  @@index([activityId])
+  @@index([status])
+  @@index([spunAt])
+  @@index([completedAt])
+}

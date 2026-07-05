@@ -1,0 +1,19 @@
+{
+  "name": "Self-Discovery Hobby Wheel",
+  "short_name": "Hobby Wheel",
+  "description": "Spin, try, log, and learn which activities fit you.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EDEADF",
+  "theme_color": "#D9A441",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
